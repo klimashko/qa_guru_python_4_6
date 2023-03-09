@@ -43,10 +43,7 @@ def test_find_suitable_user():
             suiable_user = i
     assert suiable_user == {"name": "Olga", "age": 45}
     # TODO найдите всех пользователей младше 20 лет
-    suiable_users = []
-    for i in users:
-        if (i['age'] < 20):
-            suiable_users.append(i)
+    suiable_users = [x for x in users if x['age'] < 20]
     assert suiable_users == [
         {"name": "Stanislav", "age": 15},
         {"name": "Maria", "age": 18},
@@ -66,7 +63,6 @@ def test_readable_function():
     open_browser(browser_name="Chrome")
     go_to_companyname_homepage(page_url="https://companyname.com")
     find_registration_button_on_login_page(page_url="https://companyname.com/login", button_text="Register")
-
 def open_browser(browser_name):
     actual_result = None
     assert actual_result == "Open Browser [Chrome]"
