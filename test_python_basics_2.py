@@ -61,25 +61,22 @@ def test_find_suitable_user():
 # >>> open_browser(browser_name="Chrome")
 # "Open Browser [Chrome]"
 
-#def change_name_function(func, test_readable_function):
-    #return f'{func.__name__.replace("_", " ").title()} {[inspect.signature(func).parameters.values()]}'
-
 def test_readable_function():
     open_browser(browser_name="Chrome")
     go_to_companyname_homepage(page_url="https://companyname.com")
     find_registration_button_on_login_page(page_url="https://companyname.com/login", button_text="Register")
 
+def change_function_name(func, *args):
+    return f'{func.__name__.replace("_", " ").title()} [{", ".join(args)}]'
+
 def open_browser(browser_name):
-    #actual_result = change_name_function(open_browser, test_readable_function)
-    actual_result = f'{open_browser.__name__.replace("_", " ").title()} [{browser_name}]'
+    actual_result = change_function_name(open_browser, browser_name)
     assert actual_result == "Open Browser [Chrome]"
 
 def go_to_companyname_homepage(page_url):
-    actual_result = None
-    actual_result = f'{go_to_companyname_homepage.__name__.replace("_", " ").title()} [{page_url}]'
+    actual_result = change_function_name(go_to_companyname_homepage, page_url)
     assert actual_result == "Go To Companyname Homepage [https://companyname.com]"
 
 def find_registration_button_on_login_page(page_url, button_text):
-    actual_result = None
-    actual_result = f'{find_registration_button_on_login_page.__name__.replace("_", " ").title()} [{page_url}, {button_text}]'
+    actual_result = change_function_name(find_registration_button_on_login_page, page_url, button_text)
     assert actual_result == "Find Registration Button On Login Page [https://companyname.com/login, Register]"
