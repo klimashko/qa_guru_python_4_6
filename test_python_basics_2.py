@@ -67,7 +67,9 @@ def test_readable_function():
     find_registration_button_on_login_page(page_url="https://companyname.com/login", button_text="Register")
 
 def change_function_name(func, *args):
-    return f'{func.__name__.replace("_", " ").title()} [{", ".join(args)}]'
+    func_name_arg_values = f'{func.__name__.replace("_", " ").title()} [{", ".join(args)}]'
+    print(func_name_arg_values)
+    return func_name_arg_values
 
 def open_browser(browser_name):
     actual_result = change_function_name(open_browser, browser_name)
